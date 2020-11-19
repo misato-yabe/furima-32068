@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| email           | string | null: false |
-| password        | string | null: false |
-| nickname        | string | null: false |
-| birthday        | date   | null: false |
-| last_name       | string | null: false |
-| first_name      | string | null: false |
-| last_name_kana  | string | null: false |
-| first_name_kana | string | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| nickname           | string | null: false |
+| birthday           | date   | null: false |
+| last_name          | string | null: false |
+| first_name         | string | null: false |
+| last_name_kana     | string | null: false |
+| first_name_kana    | string | null: false |
 
 ### Association
 
@@ -23,7 +23,7 @@
 | Column    | Type       | Options                        |
 | ------    | ------     | ------------------------------ |
 | title     | string     | null: false                    |
-| text      | string     | null: false                    |
+| text      | text       | null: false                    |
 | category  | date       | null: false                    |
 | condition | date       | null: false                    |
 | price     | integer    | null: false                    |
@@ -39,11 +39,10 @@
 
 ## buys テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| credit_cards | string     | null: false                    |
-| user         | references | null: false, foreign_key: true |
-| room         | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -53,15 +52,15 @@
 
 ## addresses テーブル
 
-| Column     | Type       | Options     |
-| ---------- | ---------- | ----------- |
-| postcode   | string     | null: false |
-| prefecture | date       | null: false |
-| city       | string     | null: false |
-| block      | string     | null: false |
-| building   | string     | null: false |
-| tell       | string     | null: false |
-| buy        | references | null: false |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| postcode   | string     | null: false                    |
+| prefecture | date       | null: false                    |
+| city       | string     | null: false                    |
+| block      | string     | null: false                    |
+| building   | string     |                                |
+| tell       | string     | null: false                    |
+| buy        | references | null: false, foreign_key: true |
 
 ### Association
 
