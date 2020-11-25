@@ -31,32 +31,62 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
 
-      it 'カテゴリーの情報が選択されていないとき' do
+      it 'カテゴリーの情報が選択されていないとき(presence:trueのチェック)' do
+        @item.genre_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Genre Select')
+      end
+
+      it 'カテゴリーの情報が選択されていないとき(numericality:のチェック)' do
         @item.genre_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Genre Select')
       end
 
-      it '商品の状態についての情報が選択されていないとき' do
+      it '商品の状態についての情報が選択されていないとき(presence:trueのチェック)' do
+        @item.condition_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Condition Select')
+      end
+
+      it '商品の状態についての情報が選択されていないとき(numericality:のチェック)' do
         @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Condition Select')
       end
 
-      it '配送料の負担についての情報が選択されていないとき' do
+      it '配送料の負担についての情報が選択されていないとき(presence:trueのチェック)' do
         @item.postage_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Postage Select')
       end
 
-      it '配送元の地域についての情報が選択されていないとき' do
+      it '配送料の負担についての情報が選択されていないとき(numericality:のチェック)' do
+        @item.postage_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Postage Select')
+      end
+
+      it '配送元の地域についての情報が選択されていないとき(presence:trueのチェック)' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture Select')
       end
 
-      it '配送までの日数についての情報が選択されていないとき' do
+      it '配送元の地域についての情報が選択されていないとき(numericality:のチェック)' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture Select')
+      end
+
+      it '配送までの日数についての情報が選択されていないとき(presence:trueのチェック)' do
         @item.schedule_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Schedule Select')
+      end
+
+      it '配送までの日数についての情報が選択されていないとき(numericality:のチェック)' do
+        @item.schedule_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Schedule Select')
       end
