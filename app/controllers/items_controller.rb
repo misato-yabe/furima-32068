@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       @items = @item.user_id
-      render 'items/new'
+      render :new
     end
   end
 
