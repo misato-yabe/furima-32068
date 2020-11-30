@@ -9,6 +9,11 @@ RSpec.describe UserPurchase, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@user_purchase).to be_valid
     end
+    it "tokenが空では登録できないこと" do
+      @user_purchase.token = nil
+      @user_purchase.valid?
+      expect(@user_purchase.errors.full_messages).to include("Token can't be blank")
+    end
     it 'postcodeが空だと保存できないこと' do
       @user_purchase.postcode = nil
       @user_purchase.valid?

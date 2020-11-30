@@ -6,5 +6,6 @@ FactoryBot.define do
     block { '2-5' }
     tell { '09012345678' }
     building { '太郎' }
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
